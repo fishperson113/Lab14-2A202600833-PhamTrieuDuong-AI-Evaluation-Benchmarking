@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "version": "Agent_V2_Optimized",
+    "total": 64,
+    "timestamp": "2026-06-16 17:23:57",
+    "elapsed_seconds": 100.17
+  },
+  "metrics": {
+    "avg_score": 3.358,
+    "hit_rate": 0.5625,
+    "mrr": 0.5547,
+    "agreement_rate": 0.9609,
+    "avg_faithfulness": 0.6891,
+    "avg_relevancy": 0.4969,
+    "avg_latency": 0.209,
+    "pass_rate": 0.8906,
+    "total_cost": 0.037633,
+    "cost_per_eval": 0.000588,
+    "total_tokens": 5753
+  },
+  "regression": {
+    "v1_version": "Agent_V1_Base",
+    "v2_version": "Agent_V2_Optimized",
+    "delta_avg_score": -0.0193,
+    "delta_hit_rate": 0.0,
+    "delta_mrr": 0.0,
+    "delta_latency": -0.0986,
+    "delta_cost_per_eval": 0.000553,
+    "delta_pass_rate": 0.0,
+    "delta_faithfulness": 0.0,
+    "delta_relevancy": -0.0086,
+    "decision": "ROLLBACK",
+    "failures": [
+      "V2 hit_rate 0.56 below minimum 0.6"
+    ],
+    "reasoning": "Blocked by 1 gate(s): V2 hit_rate 0.56 below minimum 0.6"
+  },
+  "retrieval_analysis": {
+    "avg_hit_rate": 0.5625,
+    "avg_mrr": 0.5547,
+    "correlation_with_faithfulness": {
+      "avg_when_hit": 0.7264,
+      "avg_when_miss": 0.6411,
+      "delta": 0.0853,
+      "interpretation": "Retrieval chất lượng cao giúp cải thiện faithfulness"
+    },
+    "correlation_with_relevancy": {
+      "avg_when_hit": 0.4486,
+      "avg_when_miss": 0.5589,
+      "delta": -0.1103,
+      "interpretation": "Relevancy không bị ảnh hưởng nhiều bởi retrieval"
+    }
+  },
+  "cost_report": "## Báo cáo Chi phí & Hiệu năng\n\n**Dataset:** 64 test cases\n\n### V1 (Agent_V1_Base)\n- Total cost: $0.0023\n- Cost per eval: $0.000035\n- Avg latency: 0.31s\n- Total tokens: 5753\n- Elapsed: 102.8s\n\n### V2 (Agent_V2_Optimized)\n- Total cost: $0.0376\n- Cost per eval: $0.000588\n- Avg latency: 0.21s\n- Total tokens: 5753\n- Elapsed: 100.2s\n\n### Delta\n- Cost delta: $+0.000553/eval\n- Latency delta: -0.10s\n\n### Cost Optimization Recommendations\n- **Caching kết quả judge**: Cache các câu hỏi trùng lặp → giảm API calls ~15%\n- **Batch processing**: Gộp nhiều câu hỏi vào 1 prompt → giảm input/output token overhead\n- **Dynamic judge selection**: Easy cases chỉ cần 1 judge → giảm 50% judge cost"
+}

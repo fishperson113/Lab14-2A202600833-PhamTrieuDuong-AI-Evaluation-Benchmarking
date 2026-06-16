@@ -32,7 +32,7 @@ async def benchmark_version(version: str, dataset: list,
     print(f"{'='*50}")
 
     start_t = time.perf_counter()
-    results = await runner.run_all(dataset, batch_size=5)
+    results = await runner.run_all(dataset, batch_size=3)
     elapsed = time.perf_counter() - start_t
 
     total = len(results)
@@ -217,8 +217,11 @@ async def main():
     print(f"[DATA] Loaded {len(dataset)} test cases\n")
 
     # 2. Khởi tạo components
+    # Cho phép ghi đè models qua env: JUDGE_MODELS="gemini-3.1-flash-lite,gemini-3-flash"
+    judge_models_env = os.getenv("JUDGE_MODELS", "").strip()
+    judge_models = [m.strip() for m in judge_models_env.split(",") if m.strip()] if judge_models_env else None
     evaluator = RetrievalEvaluator()
-    judge_consensus = MultiJudgeConsensus()
+    judge_consensus = MultiJudgeConsensus(models=judge_models)
     print(f"[CONFIG] Multi-Judge với {judge_consensus.judge_count} models: "
           f"{[j.model_short() for j in judge_consensus.judges]}")
 

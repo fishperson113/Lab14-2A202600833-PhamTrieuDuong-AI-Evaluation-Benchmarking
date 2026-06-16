@@ -31,10 +31,10 @@
 
 ## 📤 Danh mục nộp bài (Submission Checklist)
 Nhóm nộp 1 đường dẫn Repository (GitHub/GitLab) chứa:
-1. [ ] **Source Code**: Toàn bộ mã nguồn hoàn chỉnh.
-2. [ ] **Reports**: File `reports/summary.json` và `reports/benchmark_results.json` (được tạo ra sau khi chạy `main.py`).
-3. [ ] **Group Report**: File `analysis/failure_analysis.md` (đã điền đầy đủ).
-4. [ ] **Individual Reports**: Các file `analysis/reflections/reflection_[Tên_SV].md`.
+1. [x] **Source Code**: Toàn bộ mã nguồn hoàn chỉnh.
+2. [x] **Reports**: File `reports/summary.json` và `reports/benchmark_results.json` (được tạo ra sau khi chạy `main.py`).
+3. [x] **Group Report**: File `analysis/failure_analysis.md` (đã điền đầy đủ).
+4. [x] **Individual Reports**: File `analysis/reflections/reflection_PhamTrieuDuong.md` (đã điền đầy đủ).
 
 ---
 
